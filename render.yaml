@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: filter-anc
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: main
+    autoDeploy: true
+    buildCommand: |
+      pip install --upgrade pip uv
+      uv sync --frozen --no-dev --no-install-project
+    startCommand: |
+      uv run --no-sync streamlit run app/streamlit_app.py \
+        --server.port $PORT \
+        --server.address 0.0.0.0 \
+        --server.headless true \
+        --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: UV_LINK_MODE
+        value: copy

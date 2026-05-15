@@ -1,4 +1,4 @@
-# Python
+# Python / uv
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -10,6 +10,7 @@ dist/
 .venv-*/
 venv/
 env/
+# uv.lock на всякий коммитим, чтобы у всех была одинаковая среда после uv sync
 
 # Jupyter
 .ipynb_checkpoints/
@@ -33,9 +34,7 @@ transcribe.log
 # Streamlit
 .streamlit/secrets.toml
 
-# Generated audio (large; regenerate via scripts/generate_test_signals.py)
-data/*.wav
-!data/.gitkeep
+# WAV-эталоны для ноутбуков лежат в data/ и коммичу в репу
 
 # FPGA build artifacts
 fpga/build/
